@@ -15,3 +15,7 @@ fun ThumbnailModel.toDomain() = ThumbnailItem(
 fun ThumbnailEntity.toDomain() = ThumbnailItem(
     path, extension
 )
+
+fun ThumbnailItem.toDatabase() = ThumbnailEntity(
+    path, extension
+)

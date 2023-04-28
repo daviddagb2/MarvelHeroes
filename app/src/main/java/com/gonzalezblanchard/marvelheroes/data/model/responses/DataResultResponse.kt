@@ -1,6 +1,7 @@
 package com.gonzalezblanchard.marvelheroes.data.model.responses
 
 import com.gonzalezblanchard.marvelheroes.data.model.data.CharacterModel
+import com.gonzalezblanchard.marvelheroes.domain.models.responses.DataResultResponseItem
 import com.google.gson.annotations.SerializedName
 
 data class DataResultResponse(
@@ -10,5 +11,3 @@ data class DataResultResponse(
     @SerializedName("count") val count:Int = 0,
     @SerializedName("results") val results:List<CharacterModel>,
 )
-
-

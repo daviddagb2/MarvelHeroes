@@ -64,7 +64,6 @@ fun CharacterElementItem(
             },
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-         //val painter = rememberAsyncImagePainter("https://static.wikia.nocookie.net/marvelcinematicuniverse/images/3/35/IronMan-EndgameProfile.jpg")
         val imagenCharacter = character.thumbnail.path + "." + character.thumbnail.extension
         val painter = rememberAsyncImagePainter(
             model = ImageRequest.Builder(LocalContext.current)

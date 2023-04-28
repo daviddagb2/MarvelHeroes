@@ -15,6 +15,9 @@ interface CharacterDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(users:List<CharacterEntity>)
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insert(character:CharacterEntity)
+
     @Query("DELETE FROM heroes_table")
     suspend fun deleteAll()
 

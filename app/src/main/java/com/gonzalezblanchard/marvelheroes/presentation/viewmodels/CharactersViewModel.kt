@@ -21,18 +21,54 @@ class CharactersViewModel @Inject constructor(
     // Category state
     private val _uiState = MutableStateFlow(CharacterUIState())
     val uiState: StateFlow<CharacterUIState> = _uiState.asStateFlow()
+    private var offset:Int = 0
+    private var page:Int = 1
+    private var maxpages:Int = 0
+    private var counter:Int = 0
+    private var limit:Int = 20
+    private var total:Int = 0
+
 
     init {
+        retrieveCharacterList()
+    }
 
+    fun nextPage(){
+        if(page < maxpages){
+            page++
+            offset = page * limit
+            retrieveCharacterList()
+        }
+        else{
+            page = maxpages
+            offset = page * limit
+            retrieveCharacterList()
+        }
+    }
+
+    fun previousPage(){
+        if(page > 1){
+            page--
+            offset = page * limit
+            retrieveCharacterList()
+        }
+        else{
+            page = 1
+            offset = 0
+            retrieveCharacterList()
+        }
     }
 
     fun retrieveCharacterList() {
         viewModelScope.launch {
-
             updateAppState(true, emptyList())
-            val categories = getCharactersUseCase()
-            updateAppState(false, categories)
+            val response = getCharactersUseCase(offset = offset, limit = limit)
+            offset = response.offset
+            counter = response.count
+            total = response.total
 
+            maxpages = total / limit
+            updateAppState(false, response.results)
         }
     }
 
@@ -44,6 +80,5 @@ class CharactersViewModel @Inject constructor(
             )
         }
     }
-
 
 }

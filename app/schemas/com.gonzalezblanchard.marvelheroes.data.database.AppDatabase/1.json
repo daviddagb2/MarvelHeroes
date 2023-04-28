@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "da64841532f13b67624e583e0aaf6c7d",
+    "identityHash": "634ec4f9ea085a2793a4db599ff89f70",
     "entities": [
       {
         "tableName": "heroes_table",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT NOT NULL, `description` TEXT NOT NULL, `modified` TEXT NOT NULL, `resource_uri` TEXT NOT NULL, `path` TEXT, `extension` TEXT)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `name` TEXT NOT NULL, `description` TEXT NOT NULL, `modified` TEXT NOT NULL, `resource_uri` TEXT NOT NULL, `path` TEXT, `extension` TEXT, PRIMARY KEY(`id`))",
         "fields": [
           {
             "fieldPath": "id",
@@ -55,7 +55,7 @@
           "columnNames": [
             "id"
           ],
-          "autoGenerate": true
+          "autoGenerate": false
         },
         "indices": [],
         "foreignKeys": []
@@ -64,7 +64,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'da64841532f13b67624e583e0aaf6c7d')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '634ec4f9ea085a2793a4db599ff89f70')"
     ]
   }
 }

@@ -17,8 +17,6 @@ fun CharacterModel.toDomain() = CharacterItem(
     id, name, description, modified, thumbnail.toDomain(), resourceURI
 )
 
-fun CharacterEntity.toDomain() = thumbnail?.let {
-    CharacterItem(
-        id, name, description, modified, it.toDomain(), resourceURI
-    )
-}
+fun CharacterEntity.toDomain() = CharacterItem(
+    id, name, description, modified, thumbnail?.toDomain() ?: ThumbnailItem("http://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784",""), resourceURI
+)

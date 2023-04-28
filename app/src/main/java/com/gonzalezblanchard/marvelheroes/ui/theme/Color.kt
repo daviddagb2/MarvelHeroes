@@ -9,6 +9,8 @@ val Teal200 = Color(0xFF03DAC5)
 
 val colorPrimary = Color(0xFF03DAC5)
 val charactersBorder = Color(0xFFFF9800)
-val red = Color(0xFFFF0033)
+val red = Color(0xFFFF151A)
+
 val dark_gray = Color(0xFF666666)
 
+val backgroundMarvel = Color(0xFF121618)
