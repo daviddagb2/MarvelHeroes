@@ -5,6 +5,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.CircularProgressIndicator
+import androidx.compose.material.Divider
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -99,7 +100,8 @@ fun CharacterElementItem(
 
         Spacer(modifier = Modifier.padding(top = 10.dp))
         Row {
-            Icon(
+
+            /*Icon(
                 painter = painterResource(id = R.drawable.ic_bookmark),
                 contentDescription = null,
                 tint = red,
@@ -113,7 +115,8 @@ fun CharacterElementItem(
                     color = dark_gray,
                     fontFamily = FontFamily(Font(R.font.marvel_regular))
                 )
-            )
+            )*/
+            Divider(startIndent = 8.dp, thickness = 1.dp, color = red)
         }
     }
 }
