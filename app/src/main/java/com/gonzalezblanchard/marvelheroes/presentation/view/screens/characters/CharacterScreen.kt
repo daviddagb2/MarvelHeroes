@@ -15,6 +15,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.gonzalezblanchard.marvelheroes.presentation.components.CircularIndeterminateProgressBar
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.gonzalezblanchard.marvelheroes.presentation.components.DefaultAppBar
 import com.gonzalezblanchard.marvelheroes.presentation.components.TitleText
 import com.gonzalezblanchard.marvelheroes.presentation.viewmodels.CharactersViewModel
 import com.gonzalezblanchard.marvelheroes.ui.theme.red
@@ -25,9 +26,11 @@ fun CharacterScreen(
 ) {
     Scaffold(
         topBar = {
-            TopAppBar() {
-                Text(text = "Categorías")
-            }
+            DefaultAppBar(
+                onSearchClicked = {
+                    /*TODO*/
+                }
+            )
         }
     ) { contentPadding ->
         // Screen content
