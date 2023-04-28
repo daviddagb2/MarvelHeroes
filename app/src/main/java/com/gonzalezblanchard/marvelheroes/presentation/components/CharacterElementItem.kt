@@ -100,22 +100,6 @@ fun CharacterElementItem(
 
         Spacer(modifier = Modifier.padding(top = 10.dp))
         Row {
-
-            /*Icon(
-                painter = painterResource(id = R.drawable.ic_bookmark),
-                contentDescription = null,
-                tint = red,
-                modifier = Modifier.padding(top = 1.dp, start = 5.dp)
-            )
-            Text(
-                modifier = Modifier.padding(start = 5.dp),
-                text = "09/10",
-                style = TextStyle(
-                    fontSize = 15.sp,
-                    color = dark_gray,
-                    fontFamily = FontFamily(Font(R.font.marvel_regular))
-                )
-            )*/
             Divider(startIndent = 8.dp, thickness = 1.dp, color = red)
         }
     }
