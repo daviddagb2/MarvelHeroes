@@ -12,5 +12,5 @@ val charactersBorder = Color(0xFFFF9800)
 val red = Color(0xFFFF151A)
 
 val dark_gray = Color(0xFF666666)
-
 val backgroundMarvel = Color(0xFF121618)
+val colorHeaderMarvel = Color(0xFF1E2029)

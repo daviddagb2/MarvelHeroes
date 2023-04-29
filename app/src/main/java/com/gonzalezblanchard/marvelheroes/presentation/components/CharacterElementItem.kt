@@ -49,19 +49,19 @@ fun previewCharacterElement(){
         "http://gateway.marvel.com/v1/public/characters/1017851"
     );
 
-    CharacterElementItem(ironman)
+    //CharacterElementItem(ironman, Actions(n))
 }
 
 @Composable
 fun CharacterElementItem(
     character: CharacterItem,
-   // action: Actions
+    action: Actions
 ) {
     Column(
         modifier = Modifier.padding(10.dp)
             .width(130.dp)
             .clickable {
-               // action.actionDetails.invoke(model.id.toString())
+                action.characterDetails.invoke(character.id.toString())
             },
         horizontalAlignment = Alignment.CenterHorizontally
     ) {

@@ -5,12 +5,14 @@ import com.gonzalezblanchard.marvelheroes.data.database.entities.CharacterEntity
 
 @Dao
 interface CharacterDao {
-
     @Query("SELECT * FROM heroes_table ORDER BY id ASC")
     suspend fun getAll():List<CharacterEntity>
 
     @Query("SELECT * FROM heroes_table WHERE id = :characterId")
     suspend fun getDetail(characterId:Int):List<CharacterEntity>
+
+    @Query("SELECT * FROM heroes_table WHERE name LIKE '%' || :searchName || '%'")
+    suspend fun searchCharacter(searchName:String):List<CharacterEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(users:List<CharacterEntity>)
@@ -20,5 +22,4 @@ interface CharacterDao {
 
     @Query("DELETE FROM heroes_table")
     suspend fun deleteAll()
-
 }

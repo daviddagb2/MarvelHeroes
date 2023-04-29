@@ -19,25 +19,6 @@ class GetCharactersUseCase @Inject constructor(
             repository.insertCharacters(response.results)
         }
         return response
-
-        /*
-        val characters = repository.getAllCharactersFromApi()
-        return if(characters.isNotEmpty()){
-            repository.insertCharacters(characters)
-            characters
-        }else{
-            return repository.getAllCharactersFromDB()
-        }
-        */
-
-
-        /*
-        return if(repository.getAllCharactersFromDB().isEmpty())
-             repository.getAllCharactersFromDB()
-        else
-            repository.getAllCharactersFromApi()
-            */
-
     }
 
 }

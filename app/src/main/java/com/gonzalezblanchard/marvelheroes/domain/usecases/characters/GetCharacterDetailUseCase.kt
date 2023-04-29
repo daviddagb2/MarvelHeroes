@@ -4,14 +4,11 @@ import com.gonzalezblanchard.marvelheroes.domain.models.CharacterItem
 import com.gonzalezblanchard.marvelheroes.domain.repositories.CharacterRepository
 import javax.inject.Inject
 
-
-class SearchCharacterUseCase @Inject constructor(
+class GetCharacterDetailUseCase @Inject constructor(
     private val repository: CharacterRepository
 ) {
-    suspend operator fun invoke(
-        searchName: String
-    ): List<CharacterItem> {
-        return repository.searchCharacterFromDB(searchName)
+    suspend operator fun invoke(characterId:Int): CharacterItem {
+        return repository.getCharacter(characterId)
     }
 
 }

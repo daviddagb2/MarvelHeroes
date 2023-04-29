@@ -14,19 +14,25 @@ class CharacterRepository @Inject constructor(
     private val characterDao: CharacterDao
 ) {
 
-    suspend fun getCharacterResponseFromApi( offset:Int,
-                                             limit:Int): DataResultResponseItem {
-        val response = api.getAllCharactersFromApi(offset, limit)
-        return response
+    suspend fun getCharacterResponseFromApi(
+        offset: Int,
+        limit: Int
+    ): DataResultResponseItem {
+        return api.getAllCharactersFromApi(offset, limit)
     }
-
-    /*suspend fun getAllCharactersFromDB():List<CharacterItem>{
-        val response = api.getAllCharactersFromApi()
-        return response.map { it.toDomain() }
-    }*/
 
     suspend fun insertCharacters(characters:List<CharacterItem>){
         characterDao.insertAll(characters.map { it.toDatabase() })
+    }
+
+    suspend fun searchCharacterFromDB(searchName:String):List<CharacterItem>{
+        val response = characterDao.searchCharacter(searchName)
+        return response.map { it.toDomain() }
+    }
+
+    suspend fun getCharacter(characterId:Int): CharacterItem{
+        val response = characterDao.getDetail(characterId = characterId).find { it.id == characterId }
+        return response!!.toDomain()
     }
 
 }

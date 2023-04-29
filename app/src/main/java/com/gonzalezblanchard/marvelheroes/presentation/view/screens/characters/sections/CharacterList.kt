@@ -20,41 +20,17 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import com.gonzalezblanchard.marvelheroes.presentation.components.MyText
 import com.gonzalezblanchard.marvelheroes.R
 import com.gonzalezblanchard.marvelheroes.domain.models.CharacterItem
 import com.gonzalezblanchard.marvelheroes.domain.models.ThumbnailItem
 import com.gonzalezblanchard.marvelheroes.presentation.components.CharacterElementItem
+import com.gonzalezblanchard.marvelheroes.presentation.view.navigation.Actions
 
 
 private val characters: List<CharacterItem> = listOf(
-    CharacterItem(1, "Iron Man",
-        "Tony Stark",
-        "2023000202",
-        ThumbnailItem(
-            "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available",
-            "jpg"
-        ),
-        "http://gateway.marvel.com/v1/public/characters/1017851"
-    ),
-    CharacterItem(1, "Iron Man",
-        "Tony Stark",
-        "2023000202",
-        ThumbnailItem(
-            "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available",
-            "jpg"
-        ),
-        "http://gateway.marvel.com/v1/public/characters/1017851"
-    ),
-    CharacterItem(1, "Iron Man",
-        "Tony Stark",
-        "2023000202",
-        ThumbnailItem(
-            "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available",
-            "jpg"
-        ),
-        "http://gateway.marvel.com/v1/public/characters/1017851"
-    ),
     CharacterItem(1, "Iron Man",
         "Tony Stark",
         "2023000202",
@@ -110,32 +86,14 @@ fun MyComponent(character: CharacterItem){
 }
 
 
-
 @Composable
-fun CharacterList(isDisplayed: Boolean, characters: List<CharacterItem>){
-    if (isDisplayed) {
-        LazyColumn(){
-            items(characters){
-                CharacterElementItem(character = it)
-            }
-        }
-    }
-}
-
-@Composable
-fun CharacterListGrid(isDisplayed: Boolean, characters: List<CharacterItem>){
+fun CharacterListGrid(isDisplayed: Boolean, characters: List<CharacterItem>, navController: NavController){
     LazyVerticalGrid(
         columns = GridCells.Adaptive(minSize = 128.dp)
     ) {
         items(characters) { character ->
            // MyComponent(character = character)
-            CharacterElementItem(character = character)
+            CharacterElementItem(character = character, Actions(navController = navController))
         }
     }
-}
-
-@Preview
-@Composable
-fun previewMyCategories(){
-    CharacterListGrid(true, characters = characters)
 }
