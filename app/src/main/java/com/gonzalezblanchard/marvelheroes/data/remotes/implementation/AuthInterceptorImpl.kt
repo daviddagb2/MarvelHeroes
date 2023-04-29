@@ -6,7 +6,6 @@ import okhttp3.Interceptor
 import okhttp3.Response
 import javax.inject.Inject
 
-
 class AuthInterceptorImpl @Inject constructor(
     private val sharedPreferences: PreferencesManager,
 ) : Interceptor {

@@ -34,5 +34,4 @@ fun TitleText(
         overflow = TextOverflow.Ellipsis
     )
 
-
 }

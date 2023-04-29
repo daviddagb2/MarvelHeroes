@@ -1,8 +1,6 @@
 package com.gonzalezblanchard.marvelheroes.data.remotes.implementation
 
 import com.gonzalezblanchard.marvelheroes.data.database.dao.CharacterDao
-import com.gonzalezblanchard.marvelheroes.data.model.data.CharacterModel
-import com.gonzalezblanchard.marvelheroes.data.model.responses.DataResultResponse
 import com.gonzalezblanchard.marvelheroes.data.remotes.interfaces.CharacterApiClient
 import com.gonzalezblanchard.marvelheroes.domain.models.CharacterItem
 import com.gonzalezblanchard.marvelheroes.domain.models.responses.DataResultResponseItem

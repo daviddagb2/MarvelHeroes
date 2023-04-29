@@ -119,7 +119,9 @@ private fun CharacterHeader(
     )
 
     if (painter.state is AsyncImagePainter.State.Success) {
-        // This will be executed during the first composition if the image is in the memory cache.
+        Log.d("CharacterDetailScreen", "Success")
+    } else if (painter.state is AsyncImagePainter.State.Error) {
+        Log.d("CharacterDetailScreen", "Error")
     }
 
     Image(

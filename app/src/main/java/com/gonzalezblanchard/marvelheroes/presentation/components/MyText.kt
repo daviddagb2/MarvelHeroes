@@ -17,7 +17,7 @@ fun MyText(title:String, color: Color, style: TextStyle, lines:Int = Int.MAX_VAL
 @Preview
 @Composable
 fun PreviewMyText(){
-    MyText(title = "titulo",
+    MyText(title = "Titulo",
         color = MaterialTheme.colors.primary,
         style = MaterialTheme.typography.subtitle1)
 }

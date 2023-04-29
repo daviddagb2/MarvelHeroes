@@ -1,7 +1,6 @@
 package com.gonzalezblanchard.marvelheroes.data.model.responses
 
 import com.gonzalezblanchard.marvelheroes.data.model.data.CharacterModel
-import com.gonzalezblanchard.marvelheroes.domain.models.responses.DataResultResponseItem
 import com.google.gson.annotations.SerializedName
 
 data class DataResultResponse(

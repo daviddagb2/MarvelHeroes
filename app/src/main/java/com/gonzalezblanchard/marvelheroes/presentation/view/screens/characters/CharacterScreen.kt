@@ -49,10 +49,7 @@ fun CharacterScreen(
             )
         }
     ) { contentPadding ->
-        // Screen content
         Box(modifier = Modifier.padding(contentPadding)) {
-
-
             when(searchWidgetState){
                 SearchWidgetState.CLOSED -> {
                     BodyListContent(characterVM, navController)

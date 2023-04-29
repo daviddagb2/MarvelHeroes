@@ -11,7 +11,7 @@ class Constants {
         const val TS = "1682613627"
         const val MD5 = "1cbbf1b09799757f74f94e6e45d1d4eb"
         const val FIREBASE_TOKEN = "FIREBASE_TOKEN"
-        const val BASE_URL = "http://gateway.marvel.com"
+        const val BASE_URL = "https://gateway.marvel.com"
 
 
     }
