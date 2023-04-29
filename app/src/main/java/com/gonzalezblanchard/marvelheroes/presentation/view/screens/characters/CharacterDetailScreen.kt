@@ -101,8 +101,6 @@ fun CharacterDetailScreen(
         }
     }
 
-
-
 @Composable
 private fun CharacterHeader(
     scrollState: ScrollState,
@@ -144,7 +142,18 @@ private fun CharacterContent(character: CharacterItem, containerHeight: Dp, navC
 
         TitleText(character.name)
 
-        ProfileProperty(stringResource(R.string.str_description), character.description)
+        if(character.description.isEmpty() || character.description.trim().isEmpty()){
+            Text(
+                text = stringResource(R.string.str_empty_desc),
+                style = TextStyle(
+                    fontFamily = FontFamily(Font(R.font.marvel_regular)),
+                    fontSize = 16.sp,
+                ),
+                modifier = Modifier.padding(20.dp)
+            )
+        }else{
+            ProfileProperty(stringResource(R.string.str_description), character.description)
+        }
 
 
         Column(
@@ -184,7 +193,6 @@ fun ProfileProperty(label: String, value: String, isLink: Boolean = false) {
                 fontFamily = FontFamily(Font(R.font.marvel_regular)),
                 fontSize = 15.sp,
             ),
-
         )
     }
 }

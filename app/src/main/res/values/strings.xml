@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">Marvel</string>
     <string name="str_description">Descripción:</string>
+    <string name="str_empty_desc">
+    Oh no, parece que la información que buscas está tan escondida como el paradero del Teseracto. Pero no te rindas, incluso los Vengadores necesitan tiempo para descifrar algunos enigmas. ¡Sigue adelante y continúa explorando!
+    </string>
+
+
+
+
 </resources>
