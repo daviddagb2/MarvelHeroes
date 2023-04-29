@@ -34,7 +34,7 @@ fun AppBarGoBack(title:String, onBackClicked: () -> Unit) {
             ) {
                 Icon(
                     imageVector = Icons.Filled.ArrowBack,
-                    contentDescription = "Search",
+                    contentDescription = "GoBack",
                     tint = Color.White
                 )
             }

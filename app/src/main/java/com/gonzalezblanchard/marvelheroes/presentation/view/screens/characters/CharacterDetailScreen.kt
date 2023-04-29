@@ -33,6 +33,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
+import coil.compose.AsyncImage
 import coil.compose.AsyncImagePainter
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
@@ -110,29 +111,21 @@ private fun CharacterHeader(
     val offset = (scrollState.value / 2)
     val offsetDp = with(LocalDensity.current) { offset.toDp() }
 
+
     val imagenCharacter = character.thumbnail.path + "." + character.thumbnail.extension
-    val painter = rememberAsyncImagePainter(
+
+    AsyncImage(
         model = ImageRequest.Builder(LocalContext.current)
             .data(imagenCharacter)
-            .size(Size.ORIGINAL) // Set the target size to load the image at.
-            .build()
-    )
-
-    if (painter.state is AsyncImagePainter.State.Success) {
-        Log.d("CharacterDetailScreen", "Success")
-    } else if (painter.state is AsyncImagePainter.State.Error) {
-        Log.d("CharacterDetailScreen", "Error")
-    }
-
-    Image(
-        painter = painter,
+            .crossfade(true)
+            .build(),
+        placeholder = painterResource(R.drawable.placeholder),
         contentDescription = character.name,
+        contentScale = ContentScale.Crop,
         modifier = Modifier
             .heightIn(max = containerHeight / 2)
             .fillMaxWidth()
             .padding(top = offsetDp),
-
-        contentScale = ContentScale.Crop,
     )
 }
 

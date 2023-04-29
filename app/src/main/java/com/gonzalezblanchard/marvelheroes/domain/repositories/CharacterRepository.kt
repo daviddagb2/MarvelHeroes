@@ -8,7 +8,6 @@ import com.gonzalezblanchard.marvelheroes.domain.models.responses.DataResultResp
 import com.gonzalezblanchard.marvelheroes.domain.models.toDomain
 import javax.inject.Inject
 
-
 class CharacterRepository @Inject constructor(
     private val api: CharacterService,
     private val characterDao: CharacterDao
