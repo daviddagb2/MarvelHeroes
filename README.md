@@ -10,7 +10,14 @@ Para consumir la API de Marvel, se utiliza Retrofit, una biblioteca de cliente H
 Finalmente, la interfaz de usuario se crea utilizando Jetpack Compose, una biblioteca moderna de IU de Android que simplifica el desarrollo de interfaces de usuario dinámicas y atractivas.
 
 
-## Acknowledgements
+## Descarga el APK
+
+¡Desata tu héroe interior! Descarga ahora mismo el APK de Marvel Heroes en GitHub.
+
+
+- [APK DEMO](https://github.com/daviddagb2/MarvelHeroes/raw/master/Apk/MarvelHeroes.apk)
+
+## Tecnologías utilizadas
 
  - [Android Kotlin](https://developer.android.com/kotlin)
  - [MVVM Architecture](https://developer.android.com/jetpack/guide?gclsrc=aw.ds&gclid=CjwKCAjw_ISWBhBkEiwAdqxb9up3VFjuEbls5467JIVkyOdTgg-z-_NntWqaSFgkJr5qt6EmGsb7vxoCj9kQAvD_BwE)
