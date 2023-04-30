@@ -40,7 +40,7 @@ fun SimplePaginatorHeader (
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(20.dp),
+                .padding(top = 20.dp, bottom = 5.dp, start = 20.dp, end = 20.dp),
             horizontalArrangement = Arrangement.Center)
         {
             Button(onClick = {

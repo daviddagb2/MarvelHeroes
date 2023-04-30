@@ -15,10 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.gonzalezblanchard.marvelheroes.presentation.components.CircularIndeterminateProgressBar
-import com.gonzalezblanchard.marvelheroes.presentation.components.SimplePaginator
-import com.gonzalezblanchard.marvelheroes.presentation.components.SimplePaginatorHeader
-import com.gonzalezblanchard.marvelheroes.presentation.components.TitleText
+import com.gonzalezblanchard.marvelheroes.presentation.components.*
 import com.gonzalezblanchard.marvelheroes.presentation.view.screens.characters.CharacterListGrid
 import com.gonzalezblanchard.marvelheroes.presentation.viewmodels.CharactersViewModel
 import com.gonzalezblanchard.marvelheroes.ui.theme.red
@@ -39,21 +36,18 @@ fun BodyListContent(vm: CharactersViewModel,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
+        SimplePaginatorHeader(
+            currentPage = page,
+            maxPages = maxpages,
+            onNextPage = {
+                vm.nextPage()
+            },
+            onPreviousPage = {
+                vm.previousPage()
+            },
+        )
 
-        CircularIndeterminateProgressBar(appUiState.isLoading)
-
-        if(!appUiState.isLoading){
-            SimplePaginatorHeader(
-                currentPage = page,
-                maxPages = maxpages,
-                onNextPage = {
-                    vm.nextPage()
-                },
-                onPreviousPage = {
-                    vm.previousPage()
-                },
-            )
-        }
+       FullLoader(appUiState.isLoading)
 
         Box(
             modifier = Modifier.fillMaxSize(),
@@ -64,7 +58,7 @@ fun BodyListContent(vm: CharactersViewModel,
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(bottom = 65.dp)
-                    .padding(top = 20.dp)
+                    .padding(top = 2.dp)
                 ,
                 contentAlignment = Alignment.Center
             ) {
@@ -73,7 +67,6 @@ fun BodyListContent(vm: CharactersViewModel,
                     appUiState.charactersList,
                     navController,
                 )
-
             }
 
             Box(
@@ -81,20 +74,22 @@ fun BodyListContent(vm: CharactersViewModel,
                     .align(Alignment.BottomCenter)
 
             ) {
-                SimplePaginator(
-                    showHeader = false,
-                    currentPage = page,
-                    maxPages = maxpages,
-                    onNextPage = {
-                        vm.nextPage()
-                    },
-                    onPreviousPage = {
-                        vm.previousPage()
-                    },
-                    onGoToPage = {
-                        vm.goToPage(it)
-                    },
-                )
+                if(!appUiState.isLoading) {
+                    SimplePaginator(
+                        showHeader = false,
+                        currentPage = page,
+                        maxPages = maxpages,
+                        onNextPage = {
+                            vm.nextPage()
+                        },
+                        onPreviousPage = {
+                            vm.previousPage()
+                        },
+                        onGoToPage = {
+                            vm.goToPage(it)
+                        },
+                    )
+                }
             }
         }
 

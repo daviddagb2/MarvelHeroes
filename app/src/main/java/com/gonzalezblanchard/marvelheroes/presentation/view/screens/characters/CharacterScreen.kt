@@ -40,10 +40,10 @@ fun CharacterScreen(
                 onCloseClicked = {
                     characterVM.updateSearchTextState(newText = "")
                     characterVM.updateSearchWidgetState(newValue = SearchWidgetState.CLOSED)
+                    characterVM.retrieveCharacterList()
                 },
                 onSearchClicked = {
-                    Log.d("Searched Text", it)
-                    Toast.makeText(mContext, it, Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(mContext, it, Toast.LENGTH_SHORT).show()
                     characterVM.searchLocalCharacters(it)
                 },
                 onSearchTriggered = {
