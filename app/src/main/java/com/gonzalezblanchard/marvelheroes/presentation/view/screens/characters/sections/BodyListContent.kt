@@ -16,6 +16,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.gonzalezblanchard.marvelheroes.presentation.components.CircularIndeterminateProgressBar
+import com.gonzalezblanchard.marvelheroes.presentation.components.SimplePaginator
+import com.gonzalezblanchard.marvelheroes.presentation.components.SimplePaginatorHeader
 import com.gonzalezblanchard.marvelheroes.presentation.components.TitleText
 import com.gonzalezblanchard.marvelheroes.presentation.view.screens.characters.CharacterListGrid
 import com.gonzalezblanchard.marvelheroes.presentation.viewmodels.CharactersViewModel
@@ -23,7 +25,9 @@ import com.gonzalezblanchard.marvelheroes.ui.theme.red
 
 @Composable
 fun BodyListContent(vm: CharactersViewModel,
-                    navController: NavController
+                    navController: NavController,
+                    page:Int,
+                    maxpages:Int
 ){
 
     // State
@@ -35,41 +39,68 @@ fun BodyListContent(vm: CharactersViewModel,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(20.dp),
-            horizontalArrangement = Arrangement.Center) {
-
-            Button(onClick = {
-                vm.previousPage()
-            }, colors = ButtonDefaults.buttonColors(backgroundColor = red)) {
-                Icon(
-                    imageVector = Icons.Default.ArrowBack,
-                    modifier = Modifier.size(20.dp),
-                    contentDescription = "drawable icons",
-                    tint = Color.White
-                )
-            } //End Button
-
-            TitleText(value = "Personajes de Marvel")
-
-            Button(onClick = {
-                vm.nextPage()
-            }, colors = ButtonDefaults.buttonColors(backgroundColor = red)) {
-                Icon(
-                    imageVector = Icons.Default.ArrowForward,
-                    modifier = Modifier.size(20.dp),
-                    contentDescription = "drawable icons",
-                    tint = Color.White
-                )
-            } //End Button
-
-        }
 
         CircularIndeterminateProgressBar(appUiState.isLoading)
 
-        CharacterListGrid(!appUiState.isLoading, appUiState.charactersList, navController)
+        if(!appUiState.isLoading){
+            SimplePaginatorHeader(
+                currentPage = page,
+                maxPages = maxpages,
+                onNextPage = {
+                    vm.nextPage()
+                },
+                onPreviousPage = {
+                    vm.previousPage()
+                },
+            )
+        }
+
+        Box(
+            modifier = Modifier.fillMaxSize(),
+            contentAlignment = Alignment.Center
+        ) {
+
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(bottom = 65.dp)
+                    .padding(top = 20.dp)
+                ,
+                contentAlignment = Alignment.Center
+            ) {
+                CharacterListGrid(
+                    !appUiState.isLoading,
+                    appUiState.charactersList,
+                    navController,
+                )
+
+            }
+
+            Box(
+                modifier = Modifier.fillMaxWidth()
+                    .align(Alignment.BottomCenter)
+
+            ) {
+                SimplePaginator(
+                    showHeader = false,
+                    currentPage = page,
+                    maxPages = maxpages,
+                    onNextPage = {
+                        vm.nextPage()
+                    },
+                    onPreviousPage = {
+                        vm.previousPage()
+                    },
+                    onGoToPage = {
+                        vm.goToPage(it)
+                    },
+                )
+            }
+        }
+
+
+
+
     }
 }
 

@@ -87,12 +87,14 @@ fun MyComponent(character: CharacterItem){
 
 
 @Composable
-fun CharacterListGrid(isDisplayed: Boolean, characters: List<CharacterItem>, navController: NavController){
+fun CharacterListGrid(isDisplayed: Boolean,
+                      characters: List<CharacterItem>,
+                      navController: NavController){
     LazyVerticalGrid(
-        columns = GridCells.Adaptive(minSize = 128.dp)
+        columns = GridCells.Adaptive(minSize = 128.dp),
+        modifier = Modifier.fillMaxHeight()
     ) {
         items(characters) { character ->
-           // MyComponent(character = character)
             CharacterElementItem(character = character, Actions(navController = navController))
         }
     }

@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -25,6 +26,8 @@ fun CharacterScreen(
     val searchWidgetState by characterVM.searchWidgetState
     val searchTextState by characterVM.searchTextState
     val mContext = LocalContext.current
+    val page by characterVM.page.observeAsState()
+    val maxpages by characterVM.maxpages.observeAsState()
 
     Scaffold(
         topBar = {
@@ -52,7 +55,7 @@ fun CharacterScreen(
         Box(modifier = Modifier.padding(contentPadding)) {
             when(searchWidgetState){
                 SearchWidgetState.CLOSED -> {
-                    BodyListContent(characterVM, navController)
+                    BodyListContent(characterVM, navController, page?:1, maxpages?:1)
                 }
 
                 SearchWidgetState.OPENED -> {

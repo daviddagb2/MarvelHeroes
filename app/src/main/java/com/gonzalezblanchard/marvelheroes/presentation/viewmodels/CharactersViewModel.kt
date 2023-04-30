@@ -1,5 +1,6 @@
 package com.gonzalezblanchard.marvelheroes.presentation.viewmodels
 
+import android.util.Log
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
@@ -89,6 +90,15 @@ class CharactersViewModel @Inject constructor(
         else{
             _page = 1
             _offset = 0
+            retrieveCharacterList()
+        }
+    }
+
+    fun goToPage(page:Int){
+        Log.i("Pagina seleccionada: ", page.toString())
+        if(_page in 1.._maxpages){
+            _page = page
+            _offset = _page * _limit
             retrieveCharacterList()
         }
     }

@@ -110,8 +110,6 @@ private fun CharacterHeader(
 ) {
     val offset = (scrollState.value / 2)
     val offsetDp = with(LocalDensity.current) { offset.toDp() }
-
-
     val imagenCharacter = character.thumbnail.path + "." + character.thumbnail.extension
 
     AsyncImage(
